@@ -25,8 +25,18 @@
             </ul>
         </div>
     
-        <form action="{% url 'posts:answer_create' question.id %}" method="post">
+        <form action="{% url 'posts:answer_create' question.id %}" method="post" class="my-3">
             {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+            {% endif %}
             <textarea name="content" id="content" rows="15"></textarea>
             <input type="submit" value="답변등록">
         </form>
