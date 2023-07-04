@@ -12,7 +12,7 @@ class QuestionForm(forms.ModelForm):
         }
 class AnswerForm(forms.ModelForm):
     class Meta:
-        moder = Answer
+        model = Answer
         fields = ['content']
         labels = {
             'content': '답변내용',
